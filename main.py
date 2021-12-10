@@ -57,7 +57,5 @@ def Automacao():
         time.sleep(numEtoken)
         
 Automacao()
-    
-
 
 
