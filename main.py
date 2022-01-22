@@ -1,63 +1,54 @@
-##*Fora do loop*
-#Ir para a para do APP(Fora do loop)
-##*Dentro do loop*
-#Executar APP
-#Esperar nevegador abrir(3 segundos)
-#Colocar dados(Usuário/ Senha)
-#Colocar número
-#TOKEN
-#Iniciar APP
-#LOOP
-#pyautogui.press('enter')
-
-import pyautogui
+import PySimpleGUI as sg
+import os
 import time
+import pyautogui
 
-usuario = 'OEMNU'
-senha = 'Pjfa#412'
-num = '61991199657'
+class TelaPython:
+    def __init__(self):
+        layout = [
+            [sg.Text('Usuário',size=(10,0)), sg.Input(size=(20,0),key='usuario')],
+            [sg.Text('Senha',size=(10,0)), sg.Input(size=(20,0),key='senha')],
+            [sg.Text('Número',size=(10,0)), sg.Input(size=(20,0),key='num')],
+            [sg.Text('Time1',size=(10,0)), sg.Slider(range=(0,30), default_value=0, orientation='h',size=(10,15),key='time1')],
+            [sg.Text('Time2',size=(10,0)), sg.Slider(range=(0,30), default_value=0, orientation='h',size=(10,15),key='time2')],
+            [sg.Button('Executar')]
+        ]
 
-moveUsuario = 1200,300
-moveSenha = 1200,300
-moveNum = 1200,300
-#sleep
-appEnavegador = 1
-logEnum = 1
-numEtoken = 1
+        janela = sg.Window("Macro Portal CLARO").layout(layout)
 
-msg = 'Pressione OK para executar o programa.(OBS: Durante a execução não use o computador)'
-winAcesso = 'documentos: Capturas de tela'
+        self.button, self.values = janela.read()
 
-def Automacao():
-    #Entrar pasta
-    pyautogui.alert(msg)
-    pyautogui.PAUSE = 0.5#PAUSEGERAL
-    pyautogui.press('winleft')
-    pyautogui.write(winAcesso)#Pasta ínicio execução
-    pyautogui.moveTo(x=516, y=325)
-    pyautogui.click()
+    def Iniciar(self):
+        while True:
+            usuario = self.values['usuario']
+            senha = self.values['senha']
+            num = self.values['num']
+            time1 = self.values['time1']
+            time2 = self.values['time2']
 
-
-    #pyautogui.press('winleft')
-    #pyautogui.write('MACRO Portal Claro')#LOCAL PASTA
-    
-    for i in range(1,6):
-        pyautogui.press('enter')
-        time.sleep(appEnavegador)
-        pyautogui.moveTo(moveUsuario)#USUÁRIO
-        pyautogui.click()
-        pyautogui.write(usuario)
-        pyautogui.moveTo(moveSenha)#SENHA
-        pyautogui.click()
-        pyautogui.write(senha)
-        time.sleep(logEnum)
-        pyautogui.moveTo(moveNum)#NUM
-        pyautogui.click()
-        pyautogui.write(num)
-        time.sleep(numEtoken)
-        
-Automacao()
-    
+            os.startfile('PortalClaro.exe')
+            time.sleep(time1)
+            pyautogui.moveTo(571, 409)#USUÁRIO
+            pyautogui.click()
+            pyautogui.write(usuario)
+            pyautogui.press('tab')#SENHA
+            pyautogui.write(senha)#Pjfa#412
+            pyautogui.moveTo(672, 530)
+            pyautogui.click()
+            time.sleep(time2)
+            pyautogui.moveTo(556, 472)#NUM
+            pyautogui.click()
+            pyautogui.write(num)
+            pyautogui.moveTo(683, 505)
+            pyautogui.click()
+            time.sleep(1)
+            pyautogui.moveTo(576, 437)
+            pyautogui.click()
 
 
 
+
+
+
+tela = TelaPython()
+tela.Iniciar()
