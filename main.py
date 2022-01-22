@@ -19,34 +19,29 @@ class TelaPython:
         self.button, self.values = janela.read()
 
     def Iniciar(self):
-        while True:
-            usuario = self.values['usuario']
-            senha = self.values['senha']
-            num = self.values['num']
-            time1 = self.values['time1']
-            time2 = self.values['time2']
-
-            os.startfile('PortalClaro.exe')
-            time.sleep(time1)
-            pyautogui.moveTo(571, 409)#USUÁRIO
-            pyautogui.click()
-            pyautogui.write(usuario)
-            pyautogui.press('tab')#SENHA
-            pyautogui.write(senha)#Pjfa#412
-            pyautogui.moveTo(672, 530)
-            pyautogui.click()
-            time.sleep(time2)
-            pyautogui.moveTo(556, 472)#NUM
-            pyautogui.click()
-            pyautogui.write(num)
-            pyautogui.moveTo(683, 505)
-            pyautogui.click()
-            time.sleep(1)
-            pyautogui.moveTo(576, 437)
-            pyautogui.click()
-
-
-
+        usuario = self.values['usuario']
+        senha = self.values['senha']
+        num = self.values['num']
+        time1 = self.values['time1']
+        time2 = self.values['time2']
+        os.startfile('PortalClaro.exe')
+        time.sleep(time1)
+        pyautogui.moveTo(571, 409)#USUÁRIO
+        pyautogui.click()
+        pyautogui.write(usuario)
+        pyautogui.press('tab')#SENHA
+        pyautogui.write(senha)#Pjfa#412
+        pyautogui.moveTo(672, 530)
+        pyautogui.click()
+        time.sleep(time2)
+        pyautogui.moveTo(556, 472)#NUM
+        pyautogui.click()
+        pyautogui.write(num)
+        pyautogui.moveTo(683, 505)
+        pyautogui.click()
+        time.sleep(1)
+        pyautogui.moveTo(576, 437)
+        pyautogui.click()
 
 
 
